@@ -1,6 +1,6 @@
 
 inpaint:
-  "sd_model_key": "xxx/stable-diffusion-v1-5"
+  "sd_model_key": "stablediffusionapi/architecturerealmix"
   # run
   "image_path":
   "mask_path":
@@ -15,11 +15,11 @@ inpaint:
   "denoising_strength": 1.0
   "controlnet_units":
     - "preprocessor": "none"
-      "controlnet_key": "xxx/uvpos_cvt"
+      "controlnet_key": "GeorgeQi/Paint3d_UVPos_Control"
       "condition_image_path":
       "weight": 1.0
     - "preprocessor": "inpaint_global_harmonious"
-      "controlnet_key": "xxx/control_v11p_sd15_inpaint"
+      "controlnet_key": "lllyasviel/control_v11p_sd15_inpaint"
       "condition_image_path":
       "weight": 0.5
 
@@ -38,10 +38,10 @@ img2img:
   "denoising_strength": 0.75
   "controlnet_units":
     - "preprocessor": "none"
-      "controlnet_key": "xxx/uvpos_cvt"
+      "controlnet_key": "GeorgeQi/Paint3d_UVPos_Control"
       "condition_image_path":
       "weight": 1.0
     - "preprocessor": "none"
-      "controlnet_key": "xxx/control_v11f1e_sd15_tile"
+      "controlnet_key": "lllyasviel/control_v11f1e_sd15_tile"
       "condition_image_path":
       "weight": 1.0

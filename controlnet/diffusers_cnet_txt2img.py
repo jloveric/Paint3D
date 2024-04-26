@@ -12,11 +12,11 @@ class txt2imgControlNet():
     def __init__(self, config, torch_dtype=torch.float16):
         controlnet_list = []
         for cnet_unit in config.controlnet_units:
-            controlnet = ControlNetModel.from_pretrained(cnet_unit.controlnet_key, torch_dtype=torch_dtype)
+            controlnet = ControlNetModel.from_pretrained(cnet_unit.controlnet_key, torch_dtype=torch_dtype, resume_download=True)
             controlnet_list.append(controlnet)
         pipe = StableDiffusionControlNetPipeline.from_pretrained(config.sd_model_key, controlnet=controlnet_list,
-                                                                 torch_dtype=torch_dtype).to("cuda")
-        pipe.scheduler = EulerAncestralDiscreteScheduler.from_pretrained(config.sd_model_key, subfolder="scheduler")
+                                                                 torch_dtype=torch_dtype, resume_download=True).to("cuda")
+        pipe.scheduler = EulerAncestralDiscreteScheduler.from_pretrained(config.sd_model_key, subfolder="scheduler", resume_download=True)
         pipe.safety_checker = None
         pipe.feature_extractor = None
         pipe.requires_safety_checker = False
